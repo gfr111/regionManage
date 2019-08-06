@@ -8,8 +8,9 @@
                         <input placeholder="搜索姓名/手机号" class="searchInput" ref="inputText" placeholder-color="#8E9199" v-model="searchTxt"/>
                     </div>
                     <text style='color:#ffffff;font-size:19px;' @click="serarchEvent">{{btnTxt}}</text>
-            </div>   
-             <list :style="{height:height-130}">
+            </div>  
+             <!--:style="{height:height-130}"  -->
+             <list >
                 <cell>
                    <div v-if="list.length!=0||chooseList.length!=0">
                         <div class="centerBox" v-if="list.length!=0">    
@@ -18,7 +19,7 @@
                                 <div class="manageBtn"></div>
                             </div>                             
                             <div class="centerItem" style=" width:750px;background-color:#ffffff;"  v-for="(item,index) in list" :key="index">
-                                <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png':item.trainerPhoto"  class="personIcon"/>
+                                <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png':item.trainerPhoto"  class="personIcon"/>
                                 <div class="centerMess">
                                     <text class="centerName">{{item.trainerName}}</text>
                                     <text class="centerPhone">{{item.trainerPhone}}</text>
@@ -32,7 +33,7 @@
                             </div>               
                             <div class="peopleLeft" v-for="(item,index) in chooseList" :key="index">
                                 <div class="centerItem">                     
-                                    <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png':item.trainerPhoto"  class="personIcon"/>
+                                    <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png':item.trainerPhoto"  class="personIcon"/>
                                     <div class="centerMess">
                                         <text class="centerName">{{item.trainerName}}</text>
                                         <text class="centerPhone">{{item.trainerPhone}}</text>

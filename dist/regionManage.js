@@ -3235,6 +3235,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -3285,7 +3286,6 @@ exports.default = {
         },
         getRegionList: function getRegionList() {
             var that = this;
-
             stream.fetch({
                 method: 'GET',
                 url: that.webHost + '/api/region/list/-1',
@@ -3566,11 +3566,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addRegion
     }
-  })]), _c('list', {
-    style: {
-      height: _vm.height
-    }
-  }, [_c('cell', {
+  })]), _c('list', [_c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
@@ -4237,6 +4233,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -4518,10 +4515,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["greyTxt"]
     }, [_vm._v(_vm._s(item.headerRegionName))]) : _vm._e()]) : _vm._e()
   })], 2)]) : _vm._e(), _c('list', {
-    staticClass: ["scroller"],
-    style: {
-      height: _vm.height - 168
-    }
+    staticClass: ["scroller"]
   }, [_c('cell', {
     appendAsTree: true,
     attrs: {
@@ -4951,6 +4945,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -5160,10 +5155,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("设置区域负责人")])]), _c('text', {
     staticClass: ["rightBox"]
   }, [_vm._v("取消")])]), _c('list', {
-    staticClass: ["scroller"],
-    style: {
-      height: _vm.height - 120
-    }
+    staticClass: ["scroller"]
   }, [_c('cell', {
     appendAsTree: true,
     attrs: {
@@ -5197,7 +5189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: ["personIcon"],
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _c('div', {
       staticClass: ["centerMess"]
@@ -5537,6 +5529,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var stream = weex.requireModule('stream');
@@ -5760,11 +5753,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.serarchEvent
     }
-  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _c('list', {
-    style: {
-      height: _vm.height - 130
-    }
-  }, [_c('cell', {
+  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _c('list', [_c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
@@ -5782,7 +5771,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: ["personIcon"],
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _c('div', {
       staticClass: ["centerMess"]
@@ -5802,7 +5791,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('img', {
       staticClass: ["personIcon"],
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _c('div', {
       staticClass: ["centerMess"]
@@ -6351,6 +6340,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -6693,7 +6683,7 @@ exports.default = {
                         setTimeout(function () {
                             that.goRight(that.deleteIndex, 0);
                             that.regionList.splice(that.deleteIndex, 1);
-                            that.getRegionList();
+                            that.getRegionList(that.regionId);
                         }, 500);
                     } else {
                         nativeMoudle.toastError(ret.data.message);
@@ -6792,11 +6782,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(item.headerRegionName))]) : _vm._e(), (item.headerRegionId == _vm.regionId) ? _c('text', {
       staticClass: ["greyTxt"]
     }, [_vm._v(_vm._s(item.headerRegionName))]) : _vm._e()]) : _vm._e()
-  })], 2)]) : _vm._e(), (_vm.regionList.length != 0 || _vm.clubList.length != 0) ? _c('list', {
-    style: {
-      height: _vm.height
-    }
-  }, [_c('cell', {
+  })], 2)]) : _vm._e(), (_vm.regionList.length != 0 || _vm.clubList.length != 0) ? _c('list', [_c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"

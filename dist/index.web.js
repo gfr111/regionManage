@@ -24431,6 +24431,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -24481,7 +24482,6 @@ exports.default = {
         },
         getRegionList: function getRegionList() {
             var that = this;
-
             stream.fetch({
                 method: 'GET',
                 url: that.webHost + '/api/region/list/-1',
@@ -24774,12 +24774,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addRegion
     }
-  })]), _vm._v(" "), _c('list', {
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle({
-      height: _vm.height
-    }))
-  }, [_c('cell', [(_vm.regionList.length != 0) ? _c('div', {
+  })]), _vm._v(" "), _c('list', [_c('cell', [(_vm.regionList.length != 0) ? _c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
@@ -25287,6 +25282,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -25601,9 +25597,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 2)]) : _vm._e(), _vm._v(" "), _c('list', {
     staticClass: "scroller",
     staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle({
-      height: _vm.height - 168
-    }))
+    style: (_vm.$processStyle(undefined))
   }, [_c('cell', [_c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
@@ -25958,6 +25952,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 var modal = weex.requireModule("modal");
 var storage = weex.requireModule('storage');
@@ -26181,9 +26176,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("取消")])]), _vm._v(" "), _c('list', {
     staticClass: "scroller",
     staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle({
-      height: _vm.height - 120
-    }))
+    style: (_vm.$processStyle(undefined))
   }, [_c('cell', [_c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
@@ -26222,7 +26215,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "centerMess",
@@ -26427,6 +26420,7 @@ exports.push([module.i, "\n.emptyBox[data-v-e389b47c]{\r\n        width: 750px;\
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
 //
 //
 //
@@ -26732,12 +26726,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.serarchEvent
     }
-  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _vm._v(" "), _c('list', {
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle({
-      height: _vm.height - 130
-    }))
-  }, [_c('cell', [(_vm.list.length != 0 || _vm.chooseList.length != 0) ? _c('div', [(_vm.list.length != 0) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _vm._v(" "), _c('list', [_c('cell', [(_vm.list.length != 0 || _vm.chooseList.length != 0) ? _c('div', [(_vm.list.length != 0) ? _c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
@@ -26767,7 +26756,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "centerMess",
@@ -26813,7 +26802,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
       attrs: {
-        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png' : item.trainerPhoto
+        "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
       }
     }), _vm._v(" "), _c('div', {
       staticClass: "centerMess",
@@ -26981,6 +26970,7 @@ exports.push([module.i, "\n.greyTxt[data-v-2f903baa]{\r\n    color:#999999;\r\n 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//
 //
 //
 //
@@ -27440,7 +27430,7 @@ exports.default = {
                         setTimeout(function () {
                             that.goRight(that.deleteIndex, 0);
                             that.regionList.splice(that.deleteIndex, 1);
-                            that.getRegionList();
+                            that.getRegionList(that.regionId);
                         }, 500);
                     } else {
                         nativeMoudle.toastError(ret.data.message);
@@ -27570,12 +27560,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
     }, [_vm._v(_vm._s(item.headerRegionName))]) : _vm._e()]) : _vm._e()
-  })], 2)]) : _vm._e(), _vm._v(" "), (_vm.regionList.length != 0 || _vm.clubList.length != 0) ? _c('list', {
-    staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle({
-      height: _vm.height
-    }))
-  }, [_c('cell', [(_vm.regionList.length != 0) ? _c('div', {
+  })], 2)]) : _vm._e(), _vm._v(" "), (_vm.regionList.length != 0 || _vm.clubList.length != 0) ? _c('list', [_c('cell', [(_vm.regionList.length != 0) ? _c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))

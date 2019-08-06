@@ -8,7 +8,8 @@
                 </div>
                 <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteAdd.png" class="addIcon" @click="addRegion"/>
             </div>
-            <list :style="{height:height}" >
+            <!--  :style="{height:height}" -->
+            <list >
                 <cell>
                     <div class="centerBox" v-if="regionList.length!=0">
                         <div class="centerManage">
@@ -145,8 +146,7 @@
                 nativeMoudle.close();
             },
             getRegionList(){
-               var that=this;
-              
+               var that=this;            
                stream.fetch({
                 method: 'GET',
                 url: that.webHost+'/api/region/list/-1',

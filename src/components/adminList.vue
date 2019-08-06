@@ -8,7 +8,8 @@
                 </div>
             <text class="rightBox">取消</text>
             </div>
-            <list :style="{height:height-120}" class="scroller">
+            <!-- :style="{height:height-120}"  -->
+            <list class="scroller">
                 <cell>
                     <div class="centerBox" >                  
                             <list class="centerScroll" v-if="list.length!=0">
@@ -16,7 +17,7 @@
                                     <div class='swiperBox'>
                                         <div ref="itemDev" @swipe="handleSwipe($event,index)" class='swiperItem'>
                                             <div class="centerItem">
-                                                <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultWoman.png':item.trainerPhoto"  class="personIcon"/>
+                                                <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png':item.trainerPhoto"  class="personIcon"/>
                                                 <div class="centerMess">
                                                     <text class="centerName">{{item.trainerName}}</text>
                                                     <text class="centerPhone">{{item.trainerPhone}}</text>

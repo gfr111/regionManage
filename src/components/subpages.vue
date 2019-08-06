@@ -22,7 +22,8 @@
                     </div>
                </div>
             </div>
-            <list :style="{height:height}" v-if="regionList.length!=0||clubList.length!=0">
+            <!-- :style="{height:height}" -->
+            <list  v-if="regionList.length!=0||clubList.length!=0">
                     <cell>
                         <div class="centerBox" v-if="regionList.length!=0">
                             <div class="centerManage">
@@ -462,7 +463,7 @@
                                 setTimeout(() => {
                                     that.goRight(that.deleteIndex,0);
                                     that.regionList.splice(that.deleteIndex, 1);
-                                    that.getRegionList();                                   
+                                    that.getRegionList(that.regionId);                                   
                                 }, 500);
                             }else{
                               nativeMoudle.toastError(ret.data.message);

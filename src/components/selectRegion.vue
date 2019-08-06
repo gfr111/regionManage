@@ -6,7 +6,7 @@
                     <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="returnMain"/>
                     <text style="color:#ffffff;" @click="returnMain">选择区域</text>
                 </div>
-            <text class="rightBox" @click="returnMain">取消</text>
+                <text class="rightBox" @click="returnMain">取消</text>
             </div>
             <div class="navBox" v-if="isAllHeader!=-1">    
                <div class="beforeStepBox" >
@@ -22,7 +22,8 @@
                     </div>
                </div>
             </div>
-            <list :style="{height:height-168}" class="scroller">
+            <!-- :style="{height:height-168}"  -->
+            <list class="scroller">
                 <cell>
                         <div class="centerBox">
                               <div  v-if="list.length!=0" >
