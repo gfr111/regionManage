@@ -24455,7 +24455,8 @@ exports.default = {
             deleteIndex: '',
             title: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
+            // webHost:'http://10.0.0.216:9090',
             overalAreaId: '',
             actionRegionId: ''
         };
@@ -24467,7 +24468,12 @@ exports.default = {
         var that = this;
         that.height = weex.config.env.deviceHeight;
         nativeMoudle.showProgressDialog();
-        that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
+        } else {
+            that.height = weex.config.env.deviceHeight;
+        }
+        that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
         });
@@ -24518,7 +24524,7 @@ exports.default = {
                         nativeMoudle.toastError(ret.data.message);
                     }
                 } else {
-                    nativeMoudle.toastError('网络错误！');
+                    nativeMoudle.toastError(ret);
                 }
             }, function (response) {});
         },
@@ -24746,7 +24752,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "leftBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "returnIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -24764,7 +24770,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.close
     }
-  }, [_vm._v("区域管理")])]), _vm._v(" "), _c('img', {
+  }, [_vm._v("区域管理")])]), _vm._v(" "), _c('image', {
     staticClass: "addIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -24828,7 +24834,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return _vm.toSub(item.id, item.parentId)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "centerIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -24963,7 +24969,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerMess",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "centerIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -24974,7 +24980,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerName",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), _vm._v(" "), (_vm.showChooseCenter) ? _c('img', {
+    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), _vm._v(" "), (_vm.showChooseCenter) ? _c('image', {
       staticClass: "selectedBtn",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -24991,7 +24997,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "bg",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle({
-      height: _vm.popHeight
+      height: _vm.popHeight + 30
     })),
     on: {
       "click": _vm.hideAddRegion
@@ -25036,7 +25042,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.regionName != '') ? _c('img', {
+  }), _vm._v(" "), (_vm.regionName != '') ? _c('image', {
     staticClass: "cancelIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -25068,7 +25074,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "bg",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle({
-      height: _vm.popHeight
+      height: _vm.popHeight + 30
     })),
     on: {
       "click": _vm.hideDeleteRegion
@@ -25298,7 +25304,7 @@ exports.default = {
             regionName: '',
             showMoveRegion: false,
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             regionId: -1,
             headerRegionList: [],
             lastHeaderRegionId: -1,
@@ -25312,7 +25318,12 @@ exports.default = {
     created: function created() {
         var that = this;
         nativeMoudle.showProgressDialog();
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
         storage.getItem('centerIdList', function (res) {
             if (res.result == 'success') {
                 that.centerIdList = JSON.parse(res.data);
@@ -25503,7 +25514,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "leftBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "returnIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -25547,7 +25558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.getRegionList(_vm.beforeHeaderRegionId)
       }
     }
-  }, [_vm._v("返回上一级")]), _vm._v(" "), _c('img', {
+  }, [_vm._v("返回上一级")]), _vm._v(" "), _c('image', {
     staticClass: "beforeIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -25573,7 +25584,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "rightRegionBox",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "beforeImg",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -25629,7 +25640,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerMess",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "centerIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -25648,7 +25659,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height - 158,
       visibility: _vm.componentVisibility
     }))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "emptyIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -25725,7 +25736,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.regionName != '') ? _c('img', {
+  }), _vm._v(" "), (_vm.regionName != '') ? _c('image', {
     staticClass: "cancelIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -25969,7 +25980,7 @@ exports.default = {
             nowIndex: -1,
             deleteIndex: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             actionRegionId: null,
             popHeight: '',
             componentVisibility: 'hidden'
@@ -25978,7 +25989,12 @@ exports.default = {
     created: function created() {
         var that = this;
         nativeMoudle.showProgressDialog();
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
+
         that.regionId = that.$route.query.id;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -26151,7 +26167,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "leftBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "returnIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -26176,7 +26192,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("取消")])]), _vm._v(" "), _c('list', {
     staticClass: "scroller",
     staticStyle: _vm.$processStyle(undefined),
-    style: (_vm.$processStyle(undefined))
+    style: (_vm.$processStyle({
+      height: _vm.height - 140
+    }))
   }, [_c('cell', [_c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
@@ -26210,7 +26228,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerItem",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "personIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -26256,7 +26274,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height - 120,
       visibility: _vm.componentVisibility
     }))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "emptyIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -26492,7 +26510,7 @@ exports.default = {
             regionId: '',
             adminList: [],
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             chooseList: [],
             searchTxt: '',
             btnTxt: '搜索',
@@ -26504,7 +26522,12 @@ exports.default = {
         var that = this;
         nativeMoudle.showProgressDialog();
         that.popHeight = weex.config.env.deviceHeight;
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
+
         that.regionId = that.$route.query.areaId;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -26672,7 +26695,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "headerBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "returnIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -26686,7 +26709,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "searchBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "searchImg",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -26726,7 +26749,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.serarchEvent
     }
-  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _vm._v(" "), _c('list', [_c('cell', [(_vm.list.length != 0 || _vm.chooseList.length != 0) ? _c('div', [(_vm.list.length != 0) ? _c('div', {
+  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _vm._v(" "), _c('list', {
+    staticStyle: _vm.$processStyle(undefined),
+    style: (_vm.$processStyle({
+      height: _vm.height - 130
+    }))
+  }, [_c('cell', [(_vm.list.length != 0 || _vm.chooseList.length != 0) ? _c('div', [(_vm.list.length != 0) ? _c('div', {
     staticClass: "centerBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
@@ -26751,7 +26779,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "background-color": "#ffffff"
       }),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "personIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -26797,7 +26825,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerItem",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "personIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -26816,7 +26844,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerPhone",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_vm._v(_vm._s(item.trainerPhone))])])]), _vm._v(" "), _c('img', {
+    }, [_vm._v(_vm._s(item.trainerPhone))])])]), _vm._v(" "), _c('image', {
       staticClass: "selectedBtn",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -26836,7 +26864,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height,
       visibility: _vm.componentVisibility
     }))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "emptyIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -27111,7 +27139,7 @@ exports.default = {
             deleteIndex: '',
             title: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             actionRegionId: '',
             regionId: '',
             parentId: '',
@@ -27128,7 +27156,12 @@ exports.default = {
     created: function created() {
         var that = this;
         // that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+50;
-        that.height = weex.config.env.deviceHeight;
+        ;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = weex.config.env.deviceHeight + 30;
+        }
         that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -27466,7 +27499,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "leftBox",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "returnIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -27484,7 +27517,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.returnMain
     }
-  }, [_vm._v("区域管理")])]), _vm._v(" "), _c('img', {
+  }, [_vm._v("区域管理")])]), _vm._v(" "), _c('image', {
     staticClass: "addIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -27513,7 +27546,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         return _vm.getRegionList(_vm.beforeHeaderRegionId)
       }
     }
-  }, [_vm._v("返回上一级")]), _vm._v(" "), _c('img', {
+  }, [_vm._v("返回上一级")]), _vm._v(" "), _c('image', {
     staticClass: "beforeIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -27539,7 +27572,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "rightRegionBox",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "beforeImg",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -27614,7 +27647,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           return _vm.nextPage(item.id)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "centerIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -27749,7 +27782,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerMess",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: "centerIcon",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -27760,7 +27793,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "centerName",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined))
-    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), _vm._v(" "), (_vm.showChooseCenter) ? _c('img', {
+    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), _vm._v(" "), (_vm.showChooseCenter) ? _c('image', {
       staticClass: "selectedBtn",
       staticStyle: _vm.$processStyle(undefined),
       style: (_vm.$processStyle(undefined)),
@@ -27780,7 +27813,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.popHeight - 78,
       visibility: _vm.componentVisibility
     }))
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: "emptyIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),
@@ -27840,7 +27873,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.regionName != '') ? _c('img', {
+  }), _vm._v(" "), (_vm.regionName != '') ? _c('image', {
     staticClass: "cancelIcon",
     staticStyle: _vm.$processStyle(undefined),
     style: (_vm.$processStyle(undefined)),

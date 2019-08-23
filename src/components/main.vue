@@ -3,10 +3,10 @@
         <div class="regionBox" :style="{height:height}">
             <div class="headerBox">
                 <div class="leftBox">
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="close"/>
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="close"/>
                     <text style="color:#ffffff;"  @click="close">区域管理</text>
                 </div>
-                <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteAdd.png" class="addIcon" @click="addRegion"/>
+                <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteAdd.png" class="addIcon" @click="addRegion"/>
             </div>
             <!--  :style="{height:height}" -->
             <list >
@@ -22,7 +22,7 @@
                                         <div ref="itemDev" @swipe="handleSwipe($event,index)" class='swiperItem' >
                                             <div  class='regionItem'>
                                                 <div class='regionItems'  @click="toSub(item.id,item.parentId)">
-                                                    <img  src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"  class="centerIcon"/>
+                                                    <image  src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"  class="centerIcon"/>
                                                     <text class="centerName">{{item.name}}</text>
                                                 </div>
                                             </div>              
@@ -59,10 +59,10 @@
                             <cell class="cell" v-for="(item,index) in clubList" :key="index"  @click="selectCenter(item.clubId)">
                                 <div class="centerItem">
                                     <div class="centerMess">
-                                        <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/centerImg.png"  class="centerIcon"/>
+                                        <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/centerImg.png"  class="centerIcon"/>
                                         <text class="centerName">{{item.clubName||'未命名'}}</text>
                                     </div>
-                                    <img :src="item.selected?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/selected.png':'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptySelected.png'" class="selectedBtn" @click="selectCenter(item.clubId)" v-if="showChooseCenter"/>
+                                    <image :src="item.selected?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/selected.png':'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptySelected.png'" class="selectedBtn" @click="selectCenter(item.clubId)" v-if="showChooseCenter"/>
                                 </div>
                                 </cell>
                             </list>
@@ -70,12 +70,12 @@
                 </cell>
             </list>
         </div>
-        <div class="bg" v-if="showAddRegion" :style="{height:popHeight}"  @click="hideAddRegion">
+        <div class="bg" v-if="showAddRegion" :style="{height:popHeight+30}"  @click="hideAddRegion">
             <div class="addregionBox" @click="empty">
                 <text class="addReginTxt">{{title}}</text>
                 <div class="nameBox">
                     <input placeholder="请输入区域名称，不超过八个字"  ref="inputText" placeholder-color='#CCCCCC' class="nameInput" v-model="regionName" maxlength="8"/>
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png" class="cancelIcon" v-if="regionName!=''" @click="clearName"/>
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png" class="cancelIcon" v-if="regionName!=''" @click="clearName"/>
                 </div>
                 <div class="regionBtnBox">
                     <text class="cencelAdd" @click="hideAddRegion">取消</text>
@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="bg" v-if="showDeleteRegion" :style="{height:popHeight}"  @click="hideDeleteRegion">
+        <div class="bg" v-if="showDeleteRegion" :style="{height:popHeight+30}"  @click="hideDeleteRegion">
             <div class="deleteRegionBox" @click="empty">
                 <text class="addReginTxt">确认要删除当前区域么？</text>       
                 <div class="regionBtnBox">
@@ -121,7 +121,8 @@
                 deleteIndex:'',
                 title:'',
                 token:'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-                webHost:'http://10.0.0.216:9090',
+                webHost:'https://www.woshipt.com',
+              // webHost:'http://10.0.0.216:9090',
                 overalAreaId:'',
                 actionRegionId:''
             }
@@ -132,8 +133,13 @@
         created(){
             var that=this;
             that.height = weex.config.env.deviceHeight;
-             nativeMoudle.showProgressDialog();
-            that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30;        
+            nativeMoudle.showProgressDialog();
+             if(weex.config.env.platform=='iOS'){
+                  that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
+              }else{
+                  that.height =  weex.config.env.deviceHeight;
+              }
+             that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;        
              nativeMoudle.getMetaData(function(map){
                 that.token=map.token;       
             });
@@ -183,7 +189,7 @@
                             nativeMoudle.toastError(ret.data.message);
                         }
                    }else{
-                     nativeMoudle.toastError('网络错误！')
+                     nativeMoudle.toastError(ret)
                    }
                
                 },function(response){

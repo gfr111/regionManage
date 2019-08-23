@@ -3,7 +3,7 @@
         <div class="regionBox" :style="{height:height}">
             <div class="headerBox">
                 <div class="leftBox">
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="returnMain"/>
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="returnMain"/>
                     <text style="color:#ffffff;" @click="returnMain">选择区域</text>
                 </div>
                 <text class="rightBox" @click="returnMain">取消</text>
@@ -11,12 +11,12 @@
             <div class="navBox" v-if="isAllHeader!=-1">    
                <div class="beforeStepBox" >
                   <text style="color:#108EE9;font-size:19px;" @click="getRegionList(beforeHeaderRegionId)" >返回上一级</text>
-                  <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/beforeStep.png" class="beforeIcon"/>
+                  <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/beforeStep.png" class="beforeIcon"/>
                 </div>      
                <div class="areaList">
                      <text class="blueTtxt" @click="getRegionList(-1)">全部</text>
                      <div  v-for="(item,index) in headerRegionList" :key="index" v-if="headerRegionList.length!=0" class="rightRegionBox">
-                        <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/nextIcon.png" class="beforeImg" />
+                        <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/nextIcon.png" class="beforeImg" />
                         <text class="blueTtxt" @click="getRegionList(item.headerRegionId)" v-if="item.headerRegionId!=lastHeaderRegionId">{{item.headerRegionName}}</text>
                         <text class="greyTxt" v-if="item.headerRegionId==lastHeaderRegionId">{{item.headerRegionName}}</text>
                     </div>
@@ -33,13 +33,13 @@
                                     </div>
                                     <div class="centerItem"  v-for="(item,index) in list" :key="index" @click="getRegionList(item.id)">
                                         <div class="centerMess">
-                                            <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"  class="centerIcon"/>
+                                            <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"  class="centerIcon"/>
                                             <text class="centerName">{{item.name}}</text>
                                         </div>
                                     </div>      
                             </div>
                             <div v-if="list.length==0" class="emptyBox" :style="{height:height-158,visibility: componentVisibility}">
-                                <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
+                                <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
                                 <text class="emptyTxt">该区域暂无内容</text>
                             </div> 
                         </div>                      
@@ -55,7 +55,7 @@
                 <text class="addReginTxt">添加区域</text>
                 <div class="nameBox">
                     <input placeholder="请输入区域名称，不超过八个字"  ref="inputText" placeholder-color='#CCCCCC' class="nameInput" v-model="regionName"/>
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png" class="cancelIcon" v-if="regionName!=''" @click="clearName"/>
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png" class="cancelIcon" v-if="regionName!=''" @click="clearName"/>
                 </div>
                 <div class="regionBtnBox">
                     <text class="cencelAdd" @click="hideAddRegion">取消</text>
@@ -90,7 +90,7 @@
                 regionName:'',
                 showMoveRegion:false,
                 token:'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-                webHost:'http://10.0.0.216:9090',
+                 webHost:'https://www.woshipt.com',
                 regionId:-1,
                 headerRegionList:[],
                 lastHeaderRegionId:-1,
@@ -104,7 +104,12 @@
         created(){
             var that=this;
              nativeMoudle.showProgressDialog();
-            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30;
+          
+             if(weex.config.env.platform=='iOS'){
+                  that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight-20;
+              }else{
+                  that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30;
+              }
             storage.getItem('centerIdList',res=>{             
                     if(res.result=='success'){
                       that.centerIdList=JSON.parse(res.data);                  

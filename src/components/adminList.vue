@@ -3,13 +3,13 @@
         <div class="regionBox" :style="{height:height}">
             <div class="headerBox">
                 <div class="leftBox">
-                    <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="returnMain"/>
+                    <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png" class="returnIcon" @click="returnMain"/>
                     <text style="color:#ffffff;" @click="returnMain">设置区域负责人</text>
                 </div>
             <text class="rightBox">取消</text>
             </div>
-            <!-- :style="{height:height-120}"  -->
-            <list class="scroller">
+            <!--   -->
+            <list class="scroller" :style="{height:height-140}">
                 <cell>
                     <div class="centerBox" >                  
                             <list class="centerScroll" v-if="list.length!=0">
@@ -17,7 +17,7 @@
                                     <div class='swiperBox'>
                                         <div ref="itemDev" @swipe="handleSwipe($event,index)" class='swiperItem'>
                                             <div class="centerItem">
-                                                <img :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png':item.trainerPhoto"  class="personIcon"/>
+                                                <image :src="item.trainerPhoto==null?'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png':item.trainerPhoto"  class="personIcon"/>
                                                 <div class="centerMess">
                                                     <text class="centerName">{{item.trainerName}}</text>
                                                     <text class="centerPhone">{{item.trainerPhone}}</text>
@@ -33,7 +33,7 @@
                                 </cell>
                             </list>
                             <div v-else class="emptyBox" :style="{height:height-120,visibility: componentVisibility}">
-                                <img src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
+                                <image src="https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png" class="emptyIcon"/>
                                 <text class="emptyTxt">这片区域无人管辖</text>
                             </div> 
                     </div>                           
@@ -70,7 +70,7 @@
                 nowIndex:-1,
                 deleteIndex:'',
                 token:'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-                webHost:'http://10.0.0.216:9090',
+                 webHost:'https://www.woshipt.com',
                 actionRegionId:null,
                 popHeight:'',
                 componentVisibility: 'hidden'
@@ -79,7 +79,12 @@
         created(){
             var that=this;
             nativeMoudle.showProgressDialog();  
-             that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30;
+              if(weex.config.env.platform=='iOS'){
+                  that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight-20;
+              }else{
+                   that.height =750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+30
+              }
+           
             that.regionId=that.$route.query.id;
              nativeMoudle.getMetaData(function(map){
                 that.token=map.token;       

@@ -3259,7 +3259,8 @@ exports.default = {
             deleteIndex: '',
             title: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
+            // webHost:'http://10.0.0.216:9090',
             overalAreaId: '',
             actionRegionId: ''
         };
@@ -3271,7 +3272,12 @@ exports.default = {
         var that = this;
         that.height = weex.config.env.deviceHeight;
         nativeMoudle.showProgressDialog();
-        that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
+        } else {
+            that.height = weex.config.env.deviceHeight;
+        }
+        that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
         });
@@ -3322,7 +3328,7 @@ exports.default = {
                         nativeMoudle.toastError(ret.data.message);
                     }
                 } else {
-                    nativeMoudle.toastError('网络错误！');
+                    nativeMoudle.toastError(ret);
                 }
             }, function (response) {});
         },
@@ -3543,7 +3549,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["headerBox"]
   }, [_c('div', {
     staticClass: ["leftBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -3558,7 +3564,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.close
     }
-  }, [_vm._v("区域管理")])]), _c('img', {
+  }, [_vm._v("区域管理")])]), _c('image', {
     staticClass: ["addIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteAdd.png"
@@ -3603,7 +3609,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.toSub(item.id, item.parentId)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["centerIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"
@@ -3700,14 +3706,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["centerItem"]
     }, [_c('div', {
       staticClass: ["centerMess"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["centerIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/centerImg.png"
       }
     }), _c('text', {
       staticClass: ["centerName"]
-    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), (_vm.showChooseCenter) ? _c('img', {
+    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), (_vm.showChooseCenter) ? _c('image', {
       staticClass: ["selectedBtn"],
       attrs: {
         "src": item.selected ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/selected.png' : 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptySelected.png'
@@ -3721,7 +3727,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }))]) : _vm._e()])])]), (_vm.showAddRegion) ? _c('div', {
     staticClass: ["bg"],
     style: {
-      height: _vm.popHeight
+      height: _vm.popHeight + 30
     },
     on: {
       "click": _vm.hideAddRegion
@@ -3749,7 +3755,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.attr.value
       }
     }
-  }), (_vm.regionName != '') ? _c('img', {
+  }), (_vm.regionName != '') ? _c('image', {
     staticClass: ["cancelIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png"
@@ -3772,7 +3778,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("确认")])])])]) : _vm._e(), (_vm.showDeleteRegion) ? _c('div', {
     staticClass: ["bg"],
     style: {
-      height: _vm.popHeight
+      height: _vm.popHeight + 30
     },
     on: {
       "click": _vm.hideDeleteRegion
@@ -4249,7 +4255,7 @@ exports.default = {
             regionName: '',
             showMoveRegion: false,
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             regionId: -1,
             headerRegionList: [],
             lastHeaderRegionId: -1,
@@ -4263,7 +4269,12 @@ exports.default = {
     created: function created() {
         var that = this;
         nativeMoudle.showProgressDialog();
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
         storage.getItem('centerIdList', function (res) {
             if (res.result == 'success') {
                 that.centerIdList = JSON.parse(res.data);
@@ -4447,7 +4458,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["headerBox"]
   }, [_c('div', {
     staticClass: ["leftBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -4481,7 +4492,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.getRegionList(_vm.beforeHeaderRegionId)
       }
     }
-  }, [_vm._v("返回上一级")]), _c('img', {
+  }, [_vm._v("返回上一级")]), _c('image', {
     staticClass: ["beforeIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/beforeStep.png"
@@ -4499,7 +4510,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return (_vm.headerRegionList.length != 0) ? _c('div', {
       key: index,
       staticClass: ["rightRegionBox"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["beforeImg"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/nextIcon.png"
@@ -4534,7 +4545,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('div', {
       staticClass: ["centerMess"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["centerIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"
@@ -4548,7 +4559,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height - 158,
       visibility: _vm.componentVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -4597,7 +4608,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.attr.value
       }
     }
-  }), (_vm.regionName != '') ? _c('img', {
+  }), (_vm.regionName != '') ? _c('image', {
     staticClass: ["cancelIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png"
@@ -4962,7 +4973,7 @@ exports.default = {
             nowIndex: -1,
             deleteIndex: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             actionRegionId: null,
             popHeight: '',
             componentVisibility: 'hidden'
@@ -4971,7 +4982,12 @@ exports.default = {
     created: function created() {
         var that = this;
         nativeMoudle.showProgressDialog();
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
+
         that.regionId = that.$route.query.id;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -5137,7 +5153,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["headerBox"]
   }, [_c('div', {
     staticClass: ["leftBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -5155,7 +5171,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("设置区域负责人")])]), _c('text', {
     staticClass: ["rightBox"]
   }, [_vm._v("取消")])]), _c('list', {
-    staticClass: ["scroller"]
+    staticClass: ["scroller"],
+    style: {
+      height: _vm.height - 140
+    }
   }, [_c('cell', {
     appendAsTree: true,
     attrs: {
@@ -5186,7 +5205,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('div', {
       staticClass: ["centerItem"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["personIcon"],
       attrs: {
         "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
@@ -5218,7 +5237,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height - 120,
       visibility: _vm.componentVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -5542,7 +5561,7 @@ exports.default = {
             regionId: '',
             adminList: [],
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             chooseList: [],
             searchTxt: '',
             btnTxt: '搜索',
@@ -5554,7 +5573,12 @@ exports.default = {
         var that = this;
         nativeMoudle.showProgressDialog();
         that.popHeight = weex.config.env.deviceHeight;
-        that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
+        }
+
         that.regionId = that.$route.query.areaId;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -5717,7 +5741,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('div', {
     staticClass: ["headerBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -5727,7 +5751,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('div', {
     staticClass: ["searchBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["searchImg"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/searchIcon.png"
@@ -5753,7 +5777,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.serarchEvent
     }
-  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _c('list', [_c('cell', {
+  }, [_vm._v(_vm._s(_vm.btnTxt))])]), _c('list', {
+    style: {
+      height: _vm.height - 130
+    }
+  }, [_c('cell', {
     appendAsTree: true,
     attrs: {
       "append": "tree"
@@ -5768,7 +5796,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         width: "750px",
         backgroundColor: "#ffffff"
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["personIcon"],
       attrs: {
         "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
@@ -5788,7 +5816,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["peopleLeft"]
     }, [_c('div', {
       staticClass: ["centerItem"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["personIcon"],
       attrs: {
         "src": item.trainerPhoto == null ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/defaultAvata.png' : item.trainerPhoto
@@ -5799,7 +5827,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["centerName"]
     }, [_vm._v(_vm._s(item.trainerName))]), _c('text', {
       staticClass: ["centerPhone"]
-    }, [_vm._v(_vm._s(item.trainerPhone))])])]), _c('img', {
+    }, [_vm._v(_vm._s(item.trainerPhone))])])]), _c('image', {
       staticClass: ["selectedBtn"],
       attrs: {
         "src": item.selected ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/selected.png' : 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptySelected.png'
@@ -5816,7 +5844,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.height,
       visibility: _vm.componentVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -6364,7 +6392,7 @@ exports.default = {
             deleteIndex: '',
             title: '',
             token: 'eyJuYW1lIjoiRWxpemEiLCJwaG9uZSI6IjEzMjkxODM0OTQyIiwiYWNjb3VudElkIjo2LCJhY2NvdW50VHlwZSI6Miwid2VjaGF0SWQiOm51bGwsInRpY2tzIjoxNTU4NjAyNDQ0NzEyfQ==.pOk8SKFjMUjap+JjBQyEbnfYpVdYj4qnhzvui+DgoTQ=',
-            webHost: 'http://10.0.0.216:9090',
+            webHost: 'https://www.woshipt.com',
             actionRegionId: '',
             regionId: '',
             parentId: '',
@@ -6381,7 +6409,12 @@ exports.default = {
     created: function created() {
         var that = this;
         // that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight+50;
-        that.height = weex.config.env.deviceHeight;
+        ;
+        if (weex.config.env.platform == 'iOS') {
+            that.height = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight - 20;
+        } else {
+            that.height = weex.config.env.deviceHeight + 30;
+        }
         that.popHeight = 750 / weex.config.env.deviceWidth * weex.config.env.deviceHeight + 30;
         nativeMoudle.getMetaData(function (map) {
             that.token = map.token;
@@ -6712,7 +6745,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["headerBox"]
   }, [_c('div', {
     staticClass: ["leftBox"]
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["returnIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteBack.png"
@@ -6727,7 +6760,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.returnMain
     }
-  }, [_vm._v("区域管理")])]), _c('img', {
+  }, [_vm._v("区域管理")])]), _c('image', {
     staticClass: ["addIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/whiteAdd.png"
@@ -6749,7 +6782,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.getRegionList(_vm.beforeHeaderRegionId)
       }
     }
-  }, [_vm._v("返回上一级")]), _c('img', {
+  }, [_vm._v("返回上一级")]), _c('image', {
     staticClass: ["beforeIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/beforeStep.png"
@@ -6767,7 +6800,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return (_vm.headerRegionList.length != 0) ? _c('div', {
       key: index,
       staticClass: ["rightRegionBox"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["beforeImg"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/nextIcon.png"
@@ -6819,7 +6852,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.nextPage(item.id)
         }
       }
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["centerIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/regionIcon.png"
@@ -6916,14 +6949,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: ["centerItem"]
     }, [_c('div', {
       staticClass: ["centerMess"]
-    }, [_c('img', {
+    }, [_c('image', {
       staticClass: ["centerIcon"],
       attrs: {
         "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/centerImg.png"
       }
     }), _c('text', {
       staticClass: ["centerName"]
-    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), (_vm.showChooseCenter) ? _c('img', {
+    }, [_vm._v(_vm._s(item.clubName || '未命名'))])]), (_vm.showChooseCenter) ? _c('image', {
       staticClass: ["selectedBtn"],
       attrs: {
         "src": item.selected ? 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/selected.png' : 'https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptySelected.png'
@@ -6940,7 +6973,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.popHeight - 78,
       visibility: _vm.componentVisibility
     }
-  }, [_c('img', {
+  }, [_c('image', {
     staticClass: ["emptyIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/emptyIcon.png"
@@ -6978,7 +7011,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.regionName = $event.target.attr.value
       }
     }
-  }), (_vm.regionName != '') ? _c('img', {
+  }), (_vm.regionName != '') ? _c('image', {
     staticClass: ["cancelIcon"],
     attrs: {
       "src": "https://bocai-center.oss-cn-hangzhou.aliyuncs.com/center_manager/static_img/greyCancel.png"
